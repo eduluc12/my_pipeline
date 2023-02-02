@@ -12,7 +12,7 @@ export class MyLambdaStack extends cdk.Stack{
         super(scope, id, props);
 
         new cdk.aws_lambda.Function(this, 'myFunction', {
-            code: cdk.aws_lambda.Code.fromAsset(resolve(__dirname, 'src')),
+            code: cdk.aws_lambda.Code.fromAsset(resolve(__dirname, '../code')),
             handler: 'main.handler',
             runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
             environment: {
