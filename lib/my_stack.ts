@@ -6,7 +6,7 @@ export class MyStack extends cdk.Stack{
     constructor(scope : Construct, id: string, props?: cdk.StackProps){
         super(scope, id, props);
 
-        new cdk.aws_dynamodb.Table(scope, 'myTable', {
+        new cdk.aws_dynamodb.Table(this, 'myTable', {
             tableName: 'a',
             partitionKey: {
                 name: 'pk',
