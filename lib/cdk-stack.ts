@@ -7,18 +7,23 @@ export class CdkStack extends cdk.Stack {
     super(scope, id, props);
 
     const pipeline = new cdk.pipelines.CodePipeline(this, 'Pipeline', {
-      synth: new cdk.pipelines.ShellStep('Synth', {
-        // Use a connection created using the AWS console to authenticate to GitHub
-        // Other sources are available.
+      synth: new cdk.pipelines.CodeBuildStep('codebuild', {
         input: cdk.pipelines.CodePipelineSource.connection('eduluc12/my_pipeline', 'master', {
           connectionArn: 'arn:aws:codestar-connections:us-east-1:552355260239:connection/107e0f2f-ad86-437f-9ee0-0ec761f6cef2', // Created using the AWS console * });',
         }),
         commands: [
           'npm ci',
-          'echo 1',
           'npx cdk synth',
         ],
-      }),
+        cache: cdk.aws_codebuild.Cache.local(
+          cdk.aws_codebuild.LocalCacheMode.CUSTOM
+        ),
+        partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromObject({
+          cache: [
+            "/root/.npm/**/*"
+          ]
+        }),
+      })
     });
 
     const manualApprovalAction = new cdk.pipelines.ManualApprovalStep('To approve');
