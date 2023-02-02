@@ -6,7 +6,7 @@ export class MyStack extends cdk.Stack{
     constructor(scope : Construct, id: string, props?: cdk.StackProps){
         super(scope, id, props);
 
-        new cdk.aws_dynamodb.Table(this, 'myTable', {
+        const myTable = new cdk.aws_dynamodb.Table(this, 'myTable', {
             tableName: 'my_custom_table',
             partitionKey: {
                 name: 'pk',
@@ -15,6 +15,12 @@ export class MyStack extends cdk.Stack{
             billingMode: cdk.aws_dynamodb.BillingMode.PAY_PER_REQUEST,
             tableClass: cdk.aws_dynamodb.TableClass.STANDARD,
         })
+
+        new cdk.CfnOutput(this, 'myOuput', {
+            exportName: 'hello',
+            value: myTable.tableArn
+        })
+
     }
 
 }
