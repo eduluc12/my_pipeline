@@ -7,7 +7,7 @@ export class MyStack extends cdk.Stack{
         super(scope, id, props);
 
         new cdk.aws_dynamodb.Table(this, 'myTable', {
-            tableName: 'a',
+            tableName: 'my_custom_table',
             partitionKey: {
                 name: 'pk',
                 type: cdk.aws_dynamodb.AttributeType.STRING
