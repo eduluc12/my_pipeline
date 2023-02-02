@@ -18,7 +18,6 @@ export class MyStack extends cdk.Stack{
             tableClass: cdk.aws_dynamodb.TableClass.STANDARD,
         })
 
-        this.myTableArn = myTable.tableArn;
 
         new cdk.CfnOutput(this, 'myOuput', {
             exportName: 'hello',
