@@ -3,6 +3,8 @@ import { Construct } from 'constructs';
 
 export class MyStack extends cdk.Stack{
 
+    readonly myTableArn : string;
+
     constructor(scope : Construct, id: string, props?: cdk.StackProps){
         super(scope, id, props);
 
@@ -15,6 +17,8 @@ export class MyStack extends cdk.Stack{
             billingMode: cdk.aws_dynamodb.BillingMode.PAY_PER_REQUEST,
             tableClass: cdk.aws_dynamodb.TableClass.STANDARD,
         })
+
+        this.myTableArn = myTable.tableArn;
 
         new cdk.CfnOutput(this, 'myOuput', {
             exportName: 'hello',
