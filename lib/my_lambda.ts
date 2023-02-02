@@ -12,8 +12,8 @@ export class MyLambdaStack extends cdk.Stack{
         super(scope, id, props);
 
         new cdk.aws_lambda.Function(this, 'myFunction', {
-            code: cdk.aws_lambda.Code.fromAsset(resolve(__dirname, '../src/main.js')),
-            handler: 'handler',
+            code: cdk.aws_lambda.Code.fromAsset(resolve(__dirname, '../src')),
+            handler: 'main.handler',
             runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
             environment: {
                 'TABLE_ARN': props?.tableArn || ''
