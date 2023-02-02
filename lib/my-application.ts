@@ -7,9 +7,7 @@ export class MyApplication extends Stage {
     constructor(scope: Construct, id: string, props?: StageProps) {
       super(scope, id, props);
   
-      const myDatabaseStack = new MyStack(this, 'Database');
-      new MyLambdaStack(this, 'MyLambdaStack', {
-        tableArn: myDatabaseStack.myTableArn
-      })
+      new MyStack(this, 'Database');
+
     }
   }
