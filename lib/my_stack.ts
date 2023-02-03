@@ -8,8 +8,8 @@ export class MyStack extends cdk.Stack{
     constructor(scope : Construct, id: string, props?: cdk.StackProps){
         super(scope, id, props);
 
-        const myTable = new cdk.aws_dynamodb.Table(this, 'myTable', {
-            tableName: 'my_custom_table',
+        const myTable = new cdk.aws_dynamodb.Table(this, 'myTable2', {
+            tableName: 'my_custom_tablex',
             partitionKey: {
                 name: 'pk',
                 type: cdk.aws_dynamodb.AttributeType.STRING
@@ -20,7 +20,7 @@ export class MyStack extends cdk.Stack{
 
 
         new cdk.CfnOutput(this, 'myOuput', {
-            exportName: 'hello',
+            exportName: 'hellox',
             value: myTable.tableArn
         })
 

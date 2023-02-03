@@ -32,7 +32,7 @@ export class CdkStack extends cdk.Stack {
         installCommands: [
           "echo 2"
         ],
-      })
+      }),
     });
 
 
