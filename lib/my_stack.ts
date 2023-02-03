@@ -5,11 +5,13 @@ export class MyStack extends cdk.Stack{
 
     readonly myTableArn : string;
 
-    constructor(scope : Construct, id: string, props?: cdk.StackProps){
+    constructor(scope : Construct, id: string, props?: cdk.StackProps & {
+        name: string
+    }){
         super(scope, id, props);
 
-        const myTable = new cdk.aws_dynamodb.Table(this, 'myTable2', {
-            tableName: 'my_custom_tablex',
+        const myTable = new cdk.aws_dynamodb.Table(this, 'myTable', {
+            tableName: 'my_customx_' + (props?.name || ''),
             partitionKey: {
                 name: 'pk',
                 type: cdk.aws_dynamodb.AttributeType.STRING
@@ -20,7 +22,7 @@ export class MyStack extends cdk.Stack{
 
 
         new cdk.CfnOutput(this, 'myOuput', {
-            exportName: 'hellox',
+            exportName: 'hellox' + props?.name || '',
             value: myTable.tableArn
         })
 
