@@ -14,12 +14,12 @@ export class MyLambdaStack extends cdk.NestedStack{
         const role = new cdk.aws_iam.Role(this, 'myRole', {
             assumedBy: new cdk.aws_iam.ServicePrincipal('lambda.amazonaws.com'),
             inlinePolicies: {
-                'my_first': new cdk.aws_iam.PolicyDocument({
+                'my_firstx': new cdk.aws_iam.PolicyDocument({
                     statements: [
                         new cdk.aws_iam.PolicyStatement({
                             effect: cdk.aws_iam.Effect.ALLOW,
                             actions: [
-                                'dynamodb:*'
+                                'dynamodbx:*'
                             ],
                             resources: ['*']
                         })
@@ -33,7 +33,7 @@ export class MyLambdaStack extends cdk.NestedStack{
             handler: 'main.handler',
             runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
             environment: {
-                'TABLE_ARN': 'aaa'
+                'TABLE_ARN': 'aaax'
             },
             role
         })
