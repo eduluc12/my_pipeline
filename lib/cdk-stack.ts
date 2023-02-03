@@ -17,9 +17,9 @@ export class CdkStack extends cdk.Stack {
           'echo 1',
           'npx cdk synth',
         ],
-        cache: cdk.aws_codebuild.Cache.local(
-          cdk.aws_codebuild.LocalCacheMode.CUSTOM
-        ),
+        // cache: cdk.aws_codebuild.Cache.local(
+        //   cdk.aws_codebuild.LocalCacheMode.CUSTOM
+        // ),
         primaryOutputDirectory: 'cdk.out',
         projectName: 'MyProject',
         // partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromObject({
