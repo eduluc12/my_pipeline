@@ -16,8 +16,8 @@ export class CdkStack extends cdk.Stack {
           'npm ci --cache /root/.npm --prefer-offline',
           'npx cdk synth',
         ],
-        cache: cdk.aws_codebuild.Cache.local(
-          cdk.aws_codebuild.LocalCacheMode.CUSTOM
+        cache: cdk.aws_codebuild.Cache.bucket(
+          new cdk.aws_s3.Bucket(this, 'myBucketForCache')
         ),
         primaryOutputDirectory: 'cdk.out',
         projectName: 'MyProject',
