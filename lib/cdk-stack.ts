@@ -14,6 +14,7 @@ export class CdkStack extends cdk.Stack {
         }),
         commands: [
           'npm ci',
+          'echo 1',
           'npx cdk synth',
         ],
         cache: cdk.aws_codebuild.Cache.local(
