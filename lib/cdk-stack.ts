@@ -22,14 +22,14 @@ export class CdkStack extends cdk.Stack {
         ),
         primaryOutputDirectory: 'cdk.out',
         projectName: 'MyProject',
-        partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromObject({
-          version: '0.2',
-          cache: {
-            paths: [
-              '/root/.npm/**/*'
-            ]
-          }
-        })
+        // partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromObject({
+        //   version: '0.2',
+        //   cache: {
+        //     paths: [
+        //       '/root/.npm/**/*'
+        //     ]
+        //   }
+        // })
         
       })
     });
