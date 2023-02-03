@@ -1,6 +1,12 @@
-version: 0.2
 
+version: 0.2
 phases:
+  pre_build:
+    commands:
+      - echo "Enter pre_build commands"
+  build:
+    commands:
+      - echo "Enter build commands"
       
 cache:
   paths:
