@@ -10,9 +10,6 @@ export class MyApplication extends Stage {
       new MyStack(this, 'Database2', {
         name: 'xxx1'
       });
-      new MyStack(this, 'Database1', {
-        name: 'xxx2'
-      });
 
     }
   }
