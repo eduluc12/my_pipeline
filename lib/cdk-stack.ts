@@ -10,11 +10,10 @@ export class CdkStack extends cdk.Stack {
     const pipeline = new cdk.pipelines.CodePipeline(this, 'Pipeline', {
       synth: new cdk.pipelines.CodeBuildStep('codebuild', {
         input: cdk.pipelines.CodePipelineSource.connection('eduluc12/my_pipeline', 'master', {
-          connectionArn: 'arn:aws:codestar-connections:us-east-1:552355260239:connection/107e0f2f-ad86-437f-9ee0-0ec761f6cef2', // Created using the AWS console * });',
+          connectionArn: 'arn:aws:codestar-connections:us-east-1:552355260239:connection/107e0f2f-ad86-437f-9ee0-0ec761f6cef2',
         }),
         commands: [
-          'npm ci',
-          'echo 1',
+          'npm ci --cache /root/.npm --prefer-offline',
           'npx cdk synth',
         ],
         cache: cdk.aws_codebuild.Cache.local(
@@ -29,8 +28,7 @@ export class CdkStack extends cdk.Stack {
               '/root/.npm/**/*'
             ]
           }
-        })
-        
+        }),
       })
     });
 
