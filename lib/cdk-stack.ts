@@ -31,14 +31,12 @@ export class CdkStack extends cdk.Stack {
         }),
         installCommands: [
           "echo 2"
-        ]
+        ],
       })
     });
 
-    const manualApprovalAction = new cdk.pipelines.ManualApprovalStep('To approve');
 
     const v = pipeline.addStage(new MyApplication(this, 'MyStage'));
-    v.addPre(manualApprovalAction)
 
   }
 }
