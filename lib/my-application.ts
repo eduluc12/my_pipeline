@@ -8,7 +8,8 @@ export class MyApplication extends Stage {
       super(scope, id, props);
   
       new MyStack(this, 'Database2', {
-        name: 'xxx1'
+        name: 'xxx1',
+        
       });
 
     }

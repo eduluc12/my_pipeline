@@ -6,7 +6,7 @@ export interface MyCustomInterface extends cdk.StackProps{
     tableArn: string
 }
 
-export class MyLambdaStack extends cdk.Stack{
+export class MyLambdaStack extends cdk.NestedStack{
 
     constructor(scope: Construct, id : string, props?: MyCustomInterface){
         super(scope, id, props);
