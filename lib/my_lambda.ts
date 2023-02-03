@@ -37,6 +37,11 @@ export class MyLambdaStack extends cdk.NestedStack{
             },
             role
         })
+
+        new cdk.CfnOutput(this, 'myOuputLambda', {
+            exportName: 'lambdaxxx',
+            value: "ccc"
+        })
     }
 
 }
