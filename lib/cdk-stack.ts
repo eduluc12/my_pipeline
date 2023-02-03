@@ -19,9 +19,11 @@ export class CdkStack extends cdk.Stack {
           cdk.aws_codebuild.LocalCacheMode.CUSTOM
         ),
         partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromObject({
-          cache: [
-            "/root/.npm/**/*"
-          ]
+          cache: {
+            paths: [
+              "/root/.npm/**/*"
+            ]
+          }
         }),
       })
     });
