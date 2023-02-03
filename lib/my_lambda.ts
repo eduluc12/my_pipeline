@@ -33,7 +33,7 @@ export class MyLambdaStack extends cdk.Stack{
             handler: 'main.handler',
             runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
             environment: {
-                'TABLE_ARN': props?.tableArn || ''
+                'TABLE_ARN': 'aaa'
             },
             role
         })

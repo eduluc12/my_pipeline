@@ -1,5 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import { MyLambdaStack } from './my_lambda';
 
 export class MyStack extends cdk.Stack{
 
@@ -20,6 +21,7 @@ export class MyStack extends cdk.Stack{
             tableClass: cdk.aws_dynamodb.TableClass.STANDARD,
         })
 
+        new MyLambdaStack(this, 'myLambda');
 
         new cdk.CfnOutput(this, 'myOuput', {
             exportName: 'hellox' + props?.name || '',
