@@ -6,6 +6,10 @@ export interface MyCustomInterface extends cdk.StackProps{
     tableArn: string
 }
 
+const myConverter = (value : string) => {
+    return value.toUpperCase();
+}
+
 export class MyLambdaStack extends cdk.NestedStack{
 
     constructor(scope: Construct, id : string, props?: MyCustomInterface){
@@ -28,7 +32,7 @@ export class MyLambdaStack extends cdk.NestedStack{
             }
         })
 
-        new cdk.aws_lambda.Function(this, 'myFunction', {
+        const fn = new cdk.aws_lambda.Function(this, 'myFunction', {
             code: cdk.aws_lambda.Code.fromAsset(resolve(__dirname, '../code')),
             handler: 'main.handler',
             runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
@@ -40,7 +44,7 @@ export class MyLambdaStack extends cdk.NestedStack{
 
         new cdk.CfnOutput(this, 'myOuputLambda', {
             exportName: 'lambdaxxx',
-            value: "ccc"
+            value: myConverter(fn.functionArn)
         })
     }
 
