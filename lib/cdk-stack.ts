@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { MyApplication } from './my-application';
+import { join } from 'path';
 
 export class CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -18,15 +19,9 @@ export class CdkStack extends cdk.Stack {
         cache: cdk.aws_codebuild.Cache.local(
           cdk.aws_codebuild.LocalCacheMode.CUSTOM
         ),
-        partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromObjectToYaml({
-          version: 0.2,
-          phases: {},
-          cache: {
-            paths: [
-              "/root/.npm/**/*"
-            ]
-          }
-        }),
+        partialBuildSpec: cdk.aws_codebuild.BuildSpec.fromSourceFilename(
+          join(__dirname, 'buildspec.yml')
+        ),
       })
     });
 
