@@ -46,7 +46,7 @@ export class MyLambdaStack extends cdk.NestedStack{
 
         new cdk.CfnOutput(this, 'myOuputLambda', {
             exportName: nameToExport,
-            value: cdk.Fn.
+            value: 'xxx<'
         })
 
     }
