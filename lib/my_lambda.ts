@@ -42,11 +42,11 @@ export class MyLambdaStack extends cdk.NestedStack{
             role
         })
 
-        const resolve = cdk.Token.asString(fn.functionArn)
+        const resolvez = cdk.Token.asString(fn.functionArn)
 
         new cdk.CfnOutput(this, 'myOuputLambda', {
             exportName: 'lambdaxxx',
-            value: myConverter(resolve)
+            value: myConverter(resolvez)
         })
 
     }
